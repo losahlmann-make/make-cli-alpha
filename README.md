@@ -50,7 +50,7 @@ The sections `account`, `datastore`, `hook` define the IDs of entities in the so
 To clone a Scenario from a source environment to a target environment, the following command can be used. The target Team can be in a different Organization (of the same Make instance).
 
 ```
-./make-cli scenarios:clone:create --config config.yml --organizationId 1 --teamId 123  --scenarioId 12345 --name ClonedScenario
+./make-cli scenarios clone create --config config.yml --organizationId 1 --teamId 123  --scenarioId 12345 --name ClonedScenario
 ```
 
 - The parameter `organizationId` defines the target Organization that needs to contain the Team given by `teamId`.
@@ -62,7 +62,7 @@ Entities can be remapped by providing the source and target entity ID pairs in t
 To save a Scenario with all its related Entities as metadata files (Blueprints), use:
 
 ```
-./make-cli scenarios:pull --config config.yml --scenarioId 12345 --organizationId 1 --teamId 123 --output test-scenario/
+./make-cli scenarios pull --config config.yml --scenarioId 12345 --organizationId 1 --teamId 123 --output test-scenario/
 ```
 
 This is especially useful to commit these files into a Source Version Control system such as Git, or to package the Scenario as a single artifact.
@@ -71,7 +71,7 @@ This is especially useful to commit these files into a Source Version Control sy
 To create a Scenario from a local Blueprint file, use:
 
 ```
-./make-cli scenarios:push --config config.yml --mapConnections --organizationId 1 --teamId 123 --package test-scenario/
+./make-cli scenarios push --config config.yml --mapConnections --organizationId 1 --teamId 123 --package test-scenario/
 ```
 
 This command handles Connections:
