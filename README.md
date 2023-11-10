@@ -10,7 +10,7 @@ The key capability of the Make CLI is to *Pull* and *Push* Scenarios (packaged w
 ## Install the Make CLI
 Please follow these steps to install the Make CLI:
 - Make sure you have the [Node.js runtime installed](https://nodejs.org/en/download).
-- [Download](https://github.com/losahlmann-make/make-cli-alpha/releases/tag/v0.0.2-alpha) the Make CLI source.
+- [Download](https://github.com/losahlmann-make/make-cli-alpha/releases/latest) the Make CLI source.
 - Make the file executable: In the command line, change into the downloaded and extracted directory and use:
   - `chmod 755 make-cli`
 - Run the Make CLI to test:
