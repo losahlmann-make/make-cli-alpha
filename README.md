@@ -14,12 +14,12 @@ Please follow these steps to install the Make CLI:
 2. [Download](https://github.com/losahlmann-make/make-cli-alpha/releases/latest) the Make CLI executable.
 3. Make the file `make-cli` executable: In the command line, change into the downloaded and extracted directory and use:
   ```bash
-	chmod 755 make-cli
-	```
+chmod 755 make-cli
+```
 4. Run the Make CLI to test:
   ```bash
-	./make-cli --help
-	```
+./make-cli --help
+```
 5. You should see a list of all available commands as output.
 
 ### Create a Make API Token
