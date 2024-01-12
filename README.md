@@ -22,6 +22,9 @@ chmod 755 make-cli
 ```
 5. You should see a list of all available commands as output.
 
+> [!WARNING]
+> The Make CLI is currently a **proof-of-concept** and not officially supported by Make. **Please use at your own risk!**
+
 ### Create a Make API Token
 The Make CLI bundles functionality provided by the Make API. For that reason it needs to be authorised to access your Make environment through a Make API Token.
 
