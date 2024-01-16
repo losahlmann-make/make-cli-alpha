@@ -51,3 +51,6 @@ hook:
 - The `domain` is the Make instance on which your (target) Organization is hosted.
 - The `token` is the Make API token for your user.
 - The sections `account`, `datastore`, `hook` define the IDs of entities in the source environment with their corresponding entity ID in the target environment. These sections are usually auto-populated by the CLI.
+
+## Usage
+[Scenario Lifecycle Management](scenario-lifecycle-management.md)
