@@ -8,7 +8,7 @@ A **Source-driven Strategy** with Git as external *Repository* and Source Versio
 To save a scenario with all its related entities as metadata files in a local repository, use:
 
 ```bash
-./make-cli scenario pull --config config.yml --repository repo/ --scenarioId 12345
+./make-cli scenario pull --config config.yml --repo repo/ --scenarioId 12345
 ```
 
 This is especially useful to track scenarios in a Source Version Control system such as Git, or to package the scenario and its related entities as a single artifact.
@@ -17,7 +17,7 @@ This is especially useful to track scenarios in a Source Version Control system 
 To create a new scenario and related entities in a target Team from a local repository, use:
 
 ```bash
-./make-cli scenario push --config config.yml --saveConfig config.yml --teamId 112890 --repository repo/ --blueprint test_scenario.json
+./make-cli scenario push --config config.yml --saveConfig config.yml --teamId 112890 --repo repo/ --blueprint test_scenario.json
 ```
 
 This command handles Connections:
