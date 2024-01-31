@@ -21,9 +21,8 @@ To create a new scenario and related entities in a target Team from a local repo
 ```
 
 This command handles Connections:
-- If the parameter `--mapConnections` is omitted, Make will pick up existing Connections in the target environment that exist for the applications used in the Scenario.
-- If the parameter `--mapConnections` is set, the mappings defined in the config file (section `account`) are used to replace the Connections.
-
+- If the parameter `--defaultConnections` is omitted, the mappings defined in the config file (section `account`) are used to replace the Connection
+- If the parameter `--defaultConnections` is set, Make will pick up existing Connections in the target environment that exist for the applications used in the Scenario.
 
 ## Clone a Scenario and its dependent Entities into a Target Environment
 To clone a Scenario from a source environment to a target environment, the following command can be used. The target Team can be in a different Organization (of the same Make instance).
