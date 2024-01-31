@@ -1,22 +1,23 @@
 # Scenario Lifecycle Management
-A **Source-driven Strategy** with Git as external Source Version Control system, provides the most flexibility regarding Scenario version management and precise change tracking over time.
+A **Source-driven Strategy** with Git as external *Repository* and Source Version Control system, provides the most flexibility regarding scenario lifecycle management and precise change tracking over time.
 
-The key capability of the Make CLI is to *Pull* and *Push* Scenarios (packaged with all related Entity metadata) between Teams and Organizations with automatic *Dependency Injection*.
+> [!IMPORTANT]
+> The key capability of the Make CLI is to *Pull* and *Push* Scenarios (packaged with all related Entity metadata) between Teams and Organizations with automatic *Dependency Injection*.
 
-## Pull a Scenario and all related Entities as Package
-To save a scenario with all its related entities as metadata files (Blueprints), use:
+## Pull a Scenario and all related Entities
+To save a scenario with all its related entities as metadata files in a local repository, use:
 
 ```bash
-./make-cli scenario pull --config config.yml --package test-scenario/ --scenarioId 12345 
+./make-cli scenario pull --config config.yml --repository repo/ --scenarioId 12345
 ```
 
-This is especially useful to commit these files into a Source Version Control system such as Git, or to package the scenario as a single artifact.
+This is especially useful to track scenarios in a Source Version Control system such as Git, or to package the scenario and its related entities as a single artifact.
 
-## Push a Scenario and all related Entities as Package
-To create a scenario from a local blueprint package, use:
+## Push a Scenario and all related Entities
+To create a new scenario and related entities in a target Team from a local repository, use:
 
 ```bash
-./make-cli scenario push --config config.yml --mapConnections --teamId 123 --package test-scenario/ --blueprint scenario.json --saveConfig config.yml
+./make-cli scenario push --config config.yml --saveConfig config.yml --teamId 112890 --repository repo/ --blueprint test_scenario.json
 ```
 
 This command handles Connections:
