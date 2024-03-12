@@ -40,17 +40,20 @@ The configuration file is a YAML file of the following structure:
 ```YAML
 domain: eu1.make.com
 token: xxxxxxxx-xxxx-xxx-xxxx-xxxxxxxxxxxx
-account:
-  eu1_123: 456
-datastore:
-  eu2_432: 987
-hook:
-  us1_101: 202
+environments:
+  eu1_234:
+    account:
+      eu1_123: 456
+    datastore:
+      eu2_432: 987
+    hook:
+      us1_ent_101: 202
 ```
 
 - The `domain` is the Make instance on which your (target) Organization is hosted.
 - The `token` is the Make API token for your user.
-- The sections `account`, `datastore`, `hook` define the IDs of entities in the source environment with their corresponding entity ID in the target environment. These sections are usually auto-populated by the CLI.
+- In the `environments` block, a section is defined for each target environment, which is named after the target zone and the target team ID in this zone.
+- The sub-sections `account`, `datastore`, `hook` define the IDs of entities in the source environment with their corresponding entity ID in the target environment. These sections are usually auto-populated by the CLI.
 
 ## Usage
 [Scenario Lifecycle Management](scenario-lifecycle-management.md)
