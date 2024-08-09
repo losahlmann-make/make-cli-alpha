@@ -25,12 +25,38 @@ chmod 755 make-cli
 > [!WARNING]
 > The Make CLI is currently a **proof-of-concept** and not officially supported by Make. **Please use at your own risk!**
 
-### Create a Make API Token
-The Make CLI bundles functionality provided by the Make API. For that reason it needs to be authorised to access your Make environment through a Make API Token.
+## Authorization
+The Make CLI bundles functionality provided by the Make API. For that reason it needs to be authorized to access your Make environment through a Make API Token [created](https://www.make.com/en/help/apps/process-management/make#connectmake) for your user.
 
-Please [follow these steps](https://www.make.com/en/help/apps/process-management/make#connectmake) to create a token for your user.
+Make sure to handle your API token in a way which follows your security requirements and don't expose the token unintentionally.
 
-## Using a Configuration File
+The token can be passed to the CLI in multiple different ways, in the following order of precedence:
+
+### Pipe in via `STDIN`
+TODO: to be implemented
+
+### `MAKE_TOKEN` Environment Variable
+If this environvariable is set, the Make CLI will read the token from it. Usually this option is used with a secret manager, like 1Password or Terrafrom Vault, to not expose the token:
+```bash
+export MAKE_TOKEN="op://Dev/Make/password"
+op run -- ./make-cli
+```
+
+### Configuration File
+If a Configuration file is used (see next section), the token can be saved there under the key `token`.
+
+## Configuration
+The Make CLI can be configured in multiple ways, with the following order of precedence of options supporting multiple configuration ways:
+1. Command line options/flags
+2. Environment variables (if available for the configuration option)
+3. Configuration file
+
+### Using a Configuration File
+By default, the configuration is read from the file `$HOME/.config/make-cli/config.yml`, if not specified differently by (in order of precedence):
+1. The command line option `--config`, pointing to the file to use.
+2. The environment variable `MAKE_CONFIG` pointing to a configuration file.
+3. The environment variable `XDG_CONFIG_HOME` is pointing to a directory different to `$HOME/.config`. Expecting a file `make-cli/config.yml` in this configuration directory.
+
 The Make CLI can take a configuration file via the parameter `--config`. Alternatively, all parameters can be provided through the command line directly.
 
 For security reasons, it is recommended to provide the Make API Token through a config file to the Make CLI and to set the file permissions correctly.
