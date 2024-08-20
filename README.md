@@ -32,9 +32,6 @@ Make sure to handle your API token in a way which follows your security requirem
 
 The token can be passed to the CLI in multiple different ways, in the following order of precedence:
 
-### Pipe in via `STDIN`
-TODO: to be implemented
-
 ### `MAKE_TOKEN` Environment Variable
 If this environvariable is set, the Make CLI will read the token from it. Usually this option is used with a secret manager, like 1Password or Terrafrom Vault, to not expose the token:
 ```bash
@@ -52,34 +49,49 @@ The Make CLI can be configured in multiple ways, with the following order of pre
 3. Configuration file
 
 ### Using a Configuration File
-By default, the configuration is read from the file `$HOME/.config/make-cli/config.yml`, if not specified differently by (in order of precedence):
+User specific configuration can be stored in a configuration file. By default, the configuration is read from the file `$HOME/.config/make-cli/config.yml`, if not specified differently by (in order of precedence):
 1. The command line option `--config`, pointing to the file to use.
 2. The environment variable `MAKE_CONFIG` pointing to a configuration file.
 3. The environment variable `XDG_CONFIG_HOME` is pointing to a directory different to `$HOME/.config`. Expecting a file `make-cli/config.yml` in this configuration directory.
 
 The Make CLI can take a configuration file via the parameter `--config`. Alternatively, all parameters can be provided through the command line directly.
 
-For security reasons, it is recommended to provide the Make API Token through a config file to the Make CLI and to set the file permissions correctly.
+For security reasons, it is recommended to provide the Make API Token through a config file to the Make CLI and to set the file permissions correctly. Don't track the config file containing the secret token in source version control.
 
 The configuration file is a YAML file of the following structure:
     
 ```YAML
-domain: eu1.make.com
 token: xxxxxxxx-xxxx-xxx-xxxx-xxxxxxxxxxxx
-environments:
-  eu1_234:
-    account:
-      eu1_123: 456
-    datastore:
-      eu2_432: 987
-    hook:
-      us1_ent_101: 202
+domain: eu1.make.com
 ```
 
-- The `domain` is the Make instance on which your (target) Organization is hosted.
 - The `token` is the Make API token for your user.
-- In the `environments` block, a section is defined for each target environment, which is named after the target zone and the target team ID in this zone.
-- The sub-sections `account`, `datastore`, `hook` define the IDs of entities in the source environment with their corresponding entity ID in the target environment. These sections are usually auto-populated by the CLI.
+- The `domain` is the Make instance on which your (target) Organization is hosted.
+
+## Environments
+The command `scenario push` uses an environment file.
+In the `environments` file, a section is defined for each target environment. It can have any name, such as `dev`.
+Each section needs the target Team Id and the domain for the Make instance where the target Organization is located. (If no domain is set, the default domain from the configuration file is used).
+
+```YAML
+dev:
+  domain: eu1.make.com
+  team: 2
+  account:
+    eu1_123: 456
+  datastore:
+    eu2_432: 987
+  hook:
+    us1_ent_101: 202
+
+prod:
+  domain: eu1.make.com
+  team: 3
+```
+
+- The sub-sections `account`, `datastore`, `hook` ect. define the IDs of entities in the source environment with their corresponding entity ID in the target environment. These sections are usually auto-populated by the CLI.
+
+By default, the file `env.yml` in the `--repo` directory is used. Is can be set explicitely using the option `--env-file`.
 
 ## Usage
 [Scenario Lifecycle Management](scenario-lifecycle-management.md)
