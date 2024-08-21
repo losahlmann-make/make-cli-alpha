@@ -95,3 +95,17 @@ By default, the file `env.yml` in the `--repo` directory is used. Is can be set 
 
 ## Usage
 [Scenario Lifecycle Management](scenario-lifecycle-management.md)
+
+## Development
+
+### Build from Source
+`npm run codegen:install`
+Auto-generate code for CLI commands based on Make API endpoints: `npm run codegen`
+Then build using `npm run build`.
+
+### Test
+There are predefined commands to test the Elm code with `npm run test:elm` and to run the end-to-end test of the CLI commands with `npm run test:cli`.
+
+### Update Make API Definition
+To pull the latest version of the OpenAPI definition for the Make API, use `npm run api:json:pull`.
+The API definition needs some manual fixes to be conform with the OpenAPI and JSON Schema standards, so that the code-gen script can consume it.
