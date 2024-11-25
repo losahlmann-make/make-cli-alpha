@@ -99,12 +99,35 @@ By default, the file `env.yml` in the `--repo` directory is used. Is can be set 
 ## Development
 
 ### Build from Source
-`npm run codegen:install`
-Auto-generate code for CLI commands based on Make API endpoints: `npm run codegen`
-Then build using `npm run build`.
+1. Clone the repository (With git subtrees)
+2. Install dependencies `npm install`
+3. Install code generation dependencies `npm run codegen:install`
+4. Auto-generate code for CLI commands based on Make API endpoints: `npm run codegen`
+5. Then build using `npm run build` (installs Elm packages).
+6. Use `npm run bundle` to combine the compiled Elm code and the JS platform code into a single file. This file is minimized.
+
+Bundle flags for pure functions and external Node modules does not reduce output size.
+No pure functions: 217.549 bytes
+With pure functions: no difference
+
+### Execute
+Execute CLI via ```./make-cli```.
 
 ### Test
+Needs [`yq`](https://github.com/mikefarah/yq) installed.
 There are predefined commands to test the Elm code with `npm run test:elm` and to run the end-to-end test of the CLI commands with `npm run test:cli`.
+
+### Upgrade Dependencies
+### NPM Packages
+`npm run upgrade:npm`
+### Main Elm Packages
+`npm run upgrade:elm`
+### Elm Codegen Packages
+### Elm Review Packages
+
+### Vendored Elm Packages
+Git Subtrees
+- `elm-cli-options-parser`: `git subtree pull --prefix packages/elm-cli-options-parser git@github.com:losahlmann-make/elm-cli-options-parser.git master --squash`
 
 ### Update Make API Definition
 To pull the latest version of the OpenAPI definition for the Make API, use `npm run api:json:pull`.
